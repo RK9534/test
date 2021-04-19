@@ -1,0 +1,185 @@
+------------------ STATISTIC ------------------------
+* It is a branch of Mathematics deals with collection, organisation and interpretation of DATA.
+
+Two Categories:
+
+1) Descriptive Stats:
+	* presenting, organising and summarizing of DATA.
+
+2) Inferential Stats:
+	* Drawing conclusion about a population based on DATA observed in a sample.
+
+
+Q)What is DATA?
+A)It is a Raw information or a text.
+
+Q)What is DATASET?
+A)Meaningful DATA
+
+Q)How many type of DATA?
+A) There are three categories of DATA:
+
+* Cross-Sectional DATA:
+	* Data for a certain time period or a particular time frame.
+* Time-Series DATA:
+	* Data for a long duration like 10 year, 20 year..ex finance data.
+* Panel DATA:
+	* Data which is cross sectional and time series by nature.
+	like amazon sales for last 5 year with that product information.
+
+Q)What include in DATASET?
+A) there are basically two categories:
+* Qualitative (Quality): Categorical Data
+	ex: gender as male or female..
+* Quantitative (Quantity): Numerical data
+	ex: sales revenue
+		* Continuos: infinite values
+			ex: sales revenue
+		* Discrete: finite values
+			ex: sales period
+
+Q)How to measure the diffrent type of DATASETS?
+A) Scale of Measurment:
+	* Categorical:
+		* Nominal: name of category data
+			ex: male as 01 female as 02
+		* Ordinal: order of category data.
+			ex: 100mtr race the data is in order as 1st, 2nd, 3rd and so on..
+
+	* Numerical:
+		* Interval: Analysing data for same time diffrence.
+			ex: measuring of temp at 10 degree to 20 degree and 40 degree to 50 degree,in both cases we are measuring 10 degree data.
+		* Ratio: Analysing data for some change in time frame.
+			ex: measuring of temp at 10 degree to 20 degree and 40 degree to 60 degree,in this senario the data which is measured are in the ratio of 1:2.
+
+NOTE: Scale of Measurement: NOIR
+
+** Insight DATASET.
+* Population: Raw Datasets or complete Datasets(100TB)
+* Sample: Taking sample from raw datasets (1TB)
+
+**SIDE NOTE:** For sample the columns/variables must be same as in population and always take random samples.
+df = pd.read_csv('')
+df.shape >> 32400897, 26
+df_sample = df.sample(0.30,random_state=1)
+
+-----------------------------------------------------
+Descriptive Stats:
+
+* Measure of Central Tendency or Central Value:
+	* Mean (Average)
+	* Median (Mid Value)
+		* If even series take average of mid two value
+		* If odd series take mid value
+	* Mode (Most frequent item)
+		* Uni-Modal: one mode
+		* Bi-Modal: more than one mode
+		* No-Modal: No mode
+
+Example:
+20, 45, 50, 35, 20, 25, 18, 1, 20, 100
+
+Mean: Sum of All Number
+	 ---------------------
+	    Total Number
+Mean = 20+45+50+35+20+25+18+1+20+100 / 10
+	 = 334/10
+	 = 33.4
+
+Median: It is a even series so we will take average of mid two.
+	 = 20 + 25 / 2
+	 = 45/2
+	 = 22.5
+
+Mode: 20
+
+* Measure of variability:
+	* Range: Diffrence b/w largest to the smallest i.e (Max - Min)
+
+	* Variance: How far the number are spread out.
+		sum(x-mean(x))^2 / n
+
+	* Standard Deviation: How much variance or variation exists from the mean.
+		 square root(variance)
+
+Example:
+X 	X-mean(X) 	X-mean(X)^2
+2 		-2 			4
+3		-1			1
+4		0			0
+5		1			1
+6		2			4
+
+			Sum of = 10
+
+
+Range: 6-2 = 4
+mean(x) = 2+3+4+5+6/5 = 4
+Variance = 10/5 = 2
+SD = root(2) = 1.414
+
+* Quartile: Divide data into four eual parts,naming as Q1, Q2, Q3 and Q4.
+
+Q1 = 1 x ((n+1)/4)th item = Q1
+Q2 = 2 x ((n+1)/4)th item = Median
+Q3 = 3 x ((n+1)/4)th item = Q3
+Q4 = 4 x ((n+1)/4)th item = Full Data
+
+Example:
+Find Q1, Q2, Q3 and Q4 for the following data:
+3, 8, 5, 2, 6, 9, 4, 10
+Solution:
+1) arrange in acending order
+2, 3, 4, 5, 6, 8, 9, 10
+
+2) Put the formula and calculate the value
+
+Q1 = 1 x ((8+1)/4)th item
+   = 1 x 9/4th item
+   = 1 x 2.25 th item
+   = 2.25th item
+
+3) Find the item value
+2.25 will be lie b/w 2 and 3 on number scale
+
+Q1 = 2.25th item
+   = 2nd + 0.25th item
+   = 3 + 0.25(3rd - 2nd)
+   = 3 + 0.25(4 - 3)
+   = 3 + 0.25*1
+   = 3.25
+
+this is our quartile one ,respectively you can find Q2,Q3 and Q4.
+
+
+Respectively we have Decile and Percentile.
+
+* Decile: Divide data into ten equal parts.
+
+D1 = 1 x ((n+1)/10)th item
+D2 = 2 x ((n+1)/10)th item
+D3 = 3 x ((n+1)/10)th item
+D4 = 4 x ((n+1)/10)th item
+......
+D10 = 10 x ((n+1)/10)th item
+
+* Percentile: Divide your data into 100 equal parts.
+
+P1 = 1 x ((n+1)/100)th item
+P2 = 2 x ((n+1)/100)th item
+P3 = 3 x ((n+1)/100)th item
+P4 = 4 x ((n+1)/100)th item
+......
+P100 = 100 x ((n+1)/100)th item
+
+------------------------------------------------
+Why?
+* we need Quartile , Decile and Percentile to check the Density or majority of our data from where to where.
+
+* To identify the outliers.
+
+Let us suppose we are analysing Titanic Dataset..
+in our age column values are from 10 to 90
+
+after applying any one or all three i.e Q, D, P..
+we get to know that from 18 year to 36 year data density is more or we can say that more number of values or variation present in our data.
